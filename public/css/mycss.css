@@ -1,0 +1,50 @@
+/*
+  align the navbar items to the right
+*/
+.navbar-right{
+  margin-left: auto;
+}
+.footer-left{
+  float: left;
+}
+.footer-right{
+  float: right;
+}
+
+
+/* Sticky footer styles */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #000;
+}
+
+.footer-container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+.footer-p {
+  margin: 19px 0;
+  color: #c1c1c1;
+}
+
+.footer-a {
+  color: inherit;
+}
+
+a{
+  text-decoration: none;
+}
