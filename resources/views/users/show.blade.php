@@ -32,7 +32,19 @@
       <!-- 用户发布的内容 -->
       <div class="card">
         <div class="card-body">
-          暂无数据~_~
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a href="#" class="nav-link active bg-transparent" data-toggle="tab">
+                Ta 的话题
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" data-toggle="tab">
+                Ta 的回复
+              </a>
+            </li>
+          </ul>
+          @include('users._topics',['topics'=>$user->topics()->recent()->paginate(5)])
         </div>
       </div>
     </div>
