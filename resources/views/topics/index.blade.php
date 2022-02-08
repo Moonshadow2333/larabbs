@@ -12,12 +12,12 @@
         <div class="card-header bg-transparent">
           <ul class="nav nav-pills">
             <li class="nav-item">
-              <a href="#" class="nav-link active">
-                最后的回复
+              <a href="{{Request::url()}}?order=default" class="nav-link {{active_class(!if_query('order','recent'))}}">
+                最后回复
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{Request::url()}}?order=recent" class="nav-link {{active_class(if_query('order','recent'))}}">
                 最新发布
               </a>
             </li>
