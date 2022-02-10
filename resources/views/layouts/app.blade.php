@@ -9,7 +9,7 @@
 
   <title>@yield('title','Larabbs') - laravel进阶教程</title>
   <link rel="stylesheet" type="text/css" href="{{mix('css/app.css')}}">
-  <link rel="stylesheet" type="text/css" href="/css/mycss.css">
+  <link rel="stylesheet" type="text/css" href="/css/mycss1.css">
   @yield('styles')
 </head>
 <body>
