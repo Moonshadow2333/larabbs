@@ -38,6 +38,7 @@ class TopicsController extends Controller
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->save();
+        session()->flash('success','成功创建话题！');
         return redirect()->route('topics.show', $topic->id)->with('message', 'Created successfully.');
     }
 
