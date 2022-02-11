@@ -11,11 +11,12 @@ class TopicPolicy extends Policy
     {
         // return $topic->user_id == $user->id;
         // return true;
-        return $topic->user_id == $user->id;
+        return $user->isAuthorOf($topic);
     }
 
     public function destroy(User $user, Topic $topic)
     {
-        return true;
+        // return true;
+        return $user->isAuthorOf($topic);
     }
 }
