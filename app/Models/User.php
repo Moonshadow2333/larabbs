@@ -47,7 +47,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function notify($instance){
+    public function topicNotify($instance){
         // 如果要通知的人是当前用户，就不必通知了！
         if($this->id == Auth::id()){
             return;
@@ -68,5 +68,10 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function replies()
     {
         return $this->hasMany(Reply::class);
+    }
+    public function markAsRead(){
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
     }
 }

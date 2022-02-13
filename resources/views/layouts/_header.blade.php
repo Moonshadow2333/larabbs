@@ -29,6 +29,13 @@
             <i class="fa fa-plus"></i>
           </a>
         </li>
+        <li class="nav-item notification-badge">
+          <a href="{{route('notifications.index')}}" class="nav-link mr-3
+           badge badge-pill badge-{{Auth::user()->notification_count>0 ? 'hint' : 'secondary'}} text-white">
+           {{Auth::user()->notification_count}}
+
+          </a>
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="navbarDropdown" role="button">
               <img src="{{Auth::user()->avatar}}" class="img-responsive img-circle" width="30px" height="30px">
