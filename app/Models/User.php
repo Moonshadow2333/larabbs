@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
-
+use Auth;
 class User extends Authenticatable implements MustVerifyEmailContract
 {
     use HasApiTokens, HasFactory, Notifiable,MustVerifyEmailTrait;
+    use Notifiable {
+        notify as protected laravelNotify;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -44,6 +47,17 @@ class User extends Authenticatable implements MustVerifyEmailContract
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function notify($instance){
+        // 如果要通知的人是当前用户，就不必通知了！
+        if($this->id == Auth::id()){
+            return;
+        }
+        // 只有数据库类型通知才需要提醒，直接发送Email或者其他的都pass。
+        if(method_exists($instance, 'toDatabase')){
+            $this->increment('notification_count');
+        }
+        $this->laravelNotify($instance);
+    }
     public function topics(){
         return $this->hasMany(Topic::class);
     }
