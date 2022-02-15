@@ -12,12 +12,14 @@ use Auth;
 use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements MustVerifyEmailContract
 {
+    use Traits\LastActivedAtHelper;
     use HasApiTokens, HasFactory, Notifiable,MustVerifyEmailTrait;
     use Notifiable {
         notify as protected laravelNotify;
     }
     use HasRoles;
     use Traits\ActiveUserHelper;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,7 +30,8 @@ class User extends Authenticatable implements MustVerifyEmailContract
         'email',
         'password',
         'introduction',
-        'avatar'
+        'avatar',
+        'last_actvied_at'
     ];
 
     /**
